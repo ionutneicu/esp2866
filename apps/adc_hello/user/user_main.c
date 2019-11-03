@@ -23,6 +23,9 @@
  */
 
 #include "esp_common.h"
+#include "esp_system.h"
+#include "uart.h"
+#include "freertos/task.h"
 
 /******************************************************************************
  * FunctionName : user_rf_cal_sector_set
@@ -78,8 +81,18 @@ uint32 user_rf_cal_sector_set(void)
  * Parameters   : none
  * Returns      : none
 *******************************************************************************/
+extern int  uart_div_modify( unsigned int port, unsigned int divider);
 void user_init(void)
 {
-    printf("SDK version:%s\n", system_get_sdk_version());
+    uart_div_modify(0, UART_CLK_FREQ / 115200);
+    os_printf("SDK version:%s\n", system_get_sdk_version());
+    os_printf("ADC TEST");
+
+    //Connect to TOUT Pin(Voltage Range between 0~1V)
+    while (1) {
+        uint16 adc_read = system_adc_read();
+        printf("%d\n", adc_read);
+        vTaskDelay(20);    //Read every 200milli Sec
+    }
 }
 

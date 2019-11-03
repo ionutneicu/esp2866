@@ -21,9 +21,10 @@ ifndef PDIR # {
 GEN_IMAGES= eagle.app.v6.out
 GEN_BINS= eagle.app.v6.bin
 SPECIAL_MKTARGETS=$(APP_MKTARGETS)
-SUBDIRS=    \
-	user    \
-	sample_lib
+SUBDIRS= \
+        user \
+	driver
+	
 
 endif # } PDIR
 
@@ -47,15 +48,15 @@ endif
 
 COMPONENTS_eagle.app.v6 = \
 	user/libuser.a  \
-	sample_lib/libsample.a
+	driver/libdriver.a
 
 LINKFLAGS_eagle.app.v6 = \
 	-L$(SDK_PATH)/lib        \
 	-Wl,--gc-sections   \
 	-nostdlib	\
-    -T$(LD_FILE)   \
+        -T$(LD_FILE)   \
 	-Wl,--no-check-sections	\
-    -u call_user_start	\
+        -u call_user_start	\
 	-Wl,-static						\
 	-Wl,--start-group					\
 	-lcirom \
@@ -123,7 +124,7 @@ DDEFINES +=				\
 # Required for each makefile to inherit from the parent
 #
 
-INCLUDES := $(INCLUDES) -I $(PDIR)include
+INCLUDES := $(INCLUDES) -I $(PDIR)include -I $(PDIR)include/driver
 sinclude $(SDK_PATH)/Makefile
 
 .PHONY: FORCE
