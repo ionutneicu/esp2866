@@ -16,11 +16,18 @@ sudo apt-get install gcc git wget make libncurses-dev flex bison gperf python py
 
 
 #install the compiler in the current directoru
-wget -qO - https://dl.espressif.com/dl/xtensa-lx106-elf-linux64-1.22.0-100-ge567ec7-5.2.0.tar.gz | tar -xvz
+#wget -qO - https://dl.espressif.com/dl/xtensa-lx106-elf-linux64-1.22.0-100-ge567ec7-5.2.0.tar.gz | tar -xvz
 
 
-#exec env.sh
+#prepare env.sh so it can be executed from any place
 
+echo "export PATH=\"\${PATH}:$( realpath ./xtensa-lx106-elf )/bin\"" >> env.sh
+echo "export SDK_PATH=\"$( realpath ESP8266_RTOS_SDK)\"" >> env.sh
+echo "export BIN_PATH=\"$( realpath esp8266_bin )\"" >> env.sh
+echo "export ESPTOOL_PATH=\"$( realpath esptool)\"" >> env.sh
+
+
+#optionally exec env.sh
 . ./env.sh
 
 
