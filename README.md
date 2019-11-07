@@ -48,7 +48,7 @@ $ make
 
 then
 
-$ ../../burn_flash.sh
+$ ../../scripts/burn_flash.sh
 
 
 
