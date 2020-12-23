@@ -3,12 +3,12 @@
 
 #clone RTOS SDK and set it to 2.0.0
 
-git clone -b v2.0.0 git@github.com:espressif/ESP8266_RTOS_SDK.git
+git clone -b v2.0.0 https://github.com/espressif/ESP8266_RTOS_SDK.git
 
 
 
 #add esptool
-git clone git@github.com:espressif/esptool.git
+git clone https://github.com/espressif/esptool.git
 
 
 #add dependencies as descrined by https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/linux-setup.html
