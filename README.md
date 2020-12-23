@@ -1,4 +1,4 @@
-# esp2866
+# esp8266
 
 
 ### Install environment:
