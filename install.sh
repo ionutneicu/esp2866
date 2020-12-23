@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -e
 
 #clone RTOS SDK and set it to 2.0.0
 
